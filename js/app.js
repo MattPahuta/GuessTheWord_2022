@@ -1,6 +1,6 @@
 // Game variables - global
 // *** move these into functions where possible
-const guessedLettersList = document.getElementById('guessed-letters-list');
+const guessedLettersList = document.querySelector('.guessed-letters');
 
 // const letterInput = document.getElementById('letter'); 
 const wordInProgress = document.getElementById('word-in-progress');
@@ -61,10 +61,57 @@ function makeGuess(letter) {
   } else {
     guessedLetters.push(letter);
     console.log('guessed letter pushed')
-    // showGuessedLetters();
-    // countGuessesRemaining(letter);
-    // updateWordInProgress(guessedLetters);
+    showGuessedLetters();
+    trackGuessesRemaining(letter);
+    updateWordInProgress(guessedLetters);
   }
+}
+
+// Show letters guessed
+function showGuessedLetters() {
+  guessedLettersList.innerHtml = '';
+  guessedLetters.forEach(letter => {
+    const li = document.createElement('li');
+    li.textContent = letter;
+    guessedLettersList.append(li)
+  });
+}
+
+// Update the hidden word to guess
+function updateWordInProgress(guessedLetters) {
+  const wordUpper = word.toUpperCase(); // make word upperCase globally?
+  const wordArray = wordUpper.split('');
+  const revealWord = [];
+
+  wordArray.forEach(letter => {
+    guessedLetters.includes(letter) ? revealWord.push(letter.toUpperCase()) : revealWord.push('●')
+  })
+
+  wordInProgress.textContent = revealWord.join('');
+  // checkWin();
+}
+
+// Track number of guesses remaining 
+function trackGuessesRemaining(guess) {
+  const wordUpper = word.toUpperCase();  // make word upperCase globally?
+
+  if (!wordUpper.includes(guess)) {
+    message.textContent = `Nope. "${guess}" is not in the word.`;
+    remainingGuesses -= 1;
+  } else {
+    message.textContent = `Horray! "${guess}" is in the word.`;
+  }
+
+
+  if (remainingGuesses === 0) {
+    message.innerHTML = `Bummer. You lose! <span class="highlight">${word}</span> was the word.`
+    // startOver();
+  } else if (remainingGuesses === 1) {
+    remainingGuessesSpan.textContent = `${remainingGuesses} guess`;
+  } else {
+    remainingGuessesSpan.textContent = `${remainingGuesses} guesses`;
+  }
+
 }
 
 // listen for form submissions - guess made
