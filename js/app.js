@@ -1,11 +1,12 @@
 // Game variables - global
 // *** move these into functions where possible
 const guessedLettersList = document.getElementById('guessed-letters-list');
-const letterInput = document.getElementById('letter');
+
+// const letterInput = document.getElementById('letter'); 
 const wordInProgress = document.getElementById('word-in-progress');
 const remainingGuessesP = document.getElementById('remaining');
 const remainingGuessesSpan = document.getElementById('remaining-guesses');
-const message = document.getElementById('message');
+const message = document.getElementById('message'); // create a message function?
 const guessBtn = document.getElementById('guess-btn');
 const playAgainBtn = document.getElementById('play-again-btn');
 
@@ -36,3 +37,48 @@ function addPlaceholders(word) {
   // Todo: check if this should be textContent
   wordInProgress.innerText = placeholderLetters.join(''); // make the array a string
 }
+
+// Validate player input is valid
+function validatePlayerInput(input) {
+  const validInput = /[a-zA-Z]/; // regex to check for valid character inputed
+
+  if (input.length === 0) {
+    message.textContent = 'Please enter a letter';
+  } else if (input.length > 1) {
+    message.textContent = `Give me one letter only.`;
+  } else if (!input.match(validInput)) {
+    message.textContent = `Yo! A letter from A to Z.`;
+  } else {
+    return input;
+  }
+}
+
+// Make the guess
+function makeGuess(letter) {
+  letter = letter.toUpperCase();
+  if (guessedLetters.includes(letter)) {
+    message.innerText = `"${letter}" has already been guessed. Try again!`;
+  } else {
+    guessedLetters.push(letter);
+    console.log('guessed letter pushed')
+    // showGuessedLetters();
+    // countGuessesRemaining(letter);
+    // updateWordInProgress(guessedLetters);
+  }
+}
+
+// listen for form submissions - guess made
+document.getElementById('guess-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  console.log('guess submitted');
+  message.textContent = '';
+
+  const letterInput = document.getElementById('letter'); 
+  const guessedLetter = letterInput.value;
+  const validGuess = validatePlayerInput(guessedLetter);
+
+  if (validGuess) makeGuess(guessedLetter);
+
+  letterInput.value = '';
+
+})
