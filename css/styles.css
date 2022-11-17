@@ -1,4 +1,45 @@
-/* Reset */
+/* Custom properties */
+:root {
+  /* fonts */
+  --ff-sans: 'Plus Jakarta Sans', Arial, sans-serif;
+  /* ****** font sizes *****************/
+  /* ********************************* */
+  --fs-700: 2.25rem;
+  --fs-600: 1.625rem;
+  --fs-500: 1.5rem;
+  --fs-400: 1rem;
+  --fs-350: 0.875rem;
+  /* font weights */
+  --fw-700: 700;
+  --fw-500: 500;
+  /* colors */
+  --clr-black: hsla(219, 22%, 16%, 1);
+  --clr-white: hsla(0, 0%, 100%, 1);
+  --clr-dark-gray-blue: hsla(217, 19%, 24%, 1);
+  --clr-galactic-blue: hsla(252, 66%, 62%, 1);
+  --clr-electric-green: hsla(150, 100%, 66%, 1);
+  --clr-light-cyan: hsla(193, 38%, 86%, 1);
+
+}
+
+@media (min-width: 40em) {
+  :root {
+    --fs-700: 2.75rem;
+    --fs-600: 2rem;
+    --fs-500: 2rem;
+    --fs-400: 1.25rem;
+    --fs-350: 1rem;
+  }
+}
+
+@media (min-width: 72em) {
+  :root {
+    --fs-700: 3.5rem;
+    --fs-600: 2.5rem;
+    --fs-400: 1.5rem;
+  }
+}
+
 /*  Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
 */
@@ -48,7 +89,6 @@ h6 {
 
 /* General Styles */
 body {
-
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -56,40 +96,80 @@ body {
 
   line-height: 1.6;
   text-align: center;
+  /* update font - heading and body */
+  font-family: var(--ff-sans);
 
-  font-family: "Open Sans", sans-serif;
-  font-style: normal;
-  font-size: 20px;
+  font-size: var(--fs-400);
+  color: var(--clr-light-cyan);
+  /* background-color: var(--clr-black); */
 
-  background-color: #dff6f6;
-  background-image: url("../img/bg.png");
-  background-size: 800px;
-  background-repeat: repeat;
-  color: #305050;
+  background-image: linear-gradient(
+    45deg,
+    hsl(240deg 73% 70%) 0%,
+    hsl(242deg 58% 65%) 11%,
+    hsl(245deg 46% 60%) 22%,
+    hsl(247deg 37% 55%) 33%,
+    hsl(249deg 31% 51%) 44%,
+    hsl(251deg 29% 46%) 56%,
+    hsl(254deg 28% 42%) 67%,
+    hsl(256deg 27% 38%) 78%,
+    hsl(258deg 25% 34%) 89%,
+    hsl(260deg 24% 30%) 100%
+  );
+
+  /* background-image: url("../img/bg.png"); */
+  /* background-size: 800px;
+  background-repeat: repeat; */
+
+
+  /* color: #305050; */
 }
 
+.container {
+  margin-inline: auto;
+  /* background: radial-gradient(50% 50% at 50% 50%,
+    rgba(167, 237, 237, 0.3) 0%,
+    rgba(156, 226, 226, 0) 100%); */
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+
+
+}
+
+header {
+  padding: 1.75em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+}
+
+/* update logo - design with canva? */
 .logo {
   width: 70%;
   max-width: 484px;
 }
 
 h1 {
-
-  padding-top: 1em;
-  font-size: 44px;
-  text-align: center;
+  font-size: var(--fs-700);
 }
 
-.container {
-  margin-inline: auto;
-  background: radial-gradient(50% 50% at 50% 50%,
-    rgba(167, 237, 237, 0.3) 0%,
-    rgba(156, 226, 226, 0) 100%);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
+.game-board {
+  min-width: 325px;
+  background: var(--clr-dark-gray-blue);
+  box-shadow: 30px 50px 80px rgba(0, 0, 0, 0.100202);
+  border-radius: 10px;
+
+
+}
+
+.game-container {
+  padding: 2.5em 1.5em;
+  text-align: center;
 }
 
 .hide {
@@ -160,8 +240,8 @@ input:focus {
   padding: 1em 3em;
   border-radius: 50px;
   margin-top: 1em;
-  color: #fff;
-  background: #ff8d5c;
+  color: var(--clr-black);
+  background: var(--clr-electric-green);
   font-size: 1em;
   align-self: center;
   outline: none;
@@ -177,11 +257,12 @@ input:focus {
 .play-again:hover {
   outline: 0;
   transform: scale(0.98);
-  background: brightness(0.3);
-  color: white;
+  /* background: brightness(0.3); */
+  color: var(--clr-white);
 }
 
 /* animatied background */
+/* Todo: change to animated gif or confetti background */
 .win {
   padding: 0 1em;
   background: linear-gradient(-45deg, #ff9d64, #f5620c);
