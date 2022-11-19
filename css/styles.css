@@ -192,8 +192,9 @@ h1 {
 
 .highlight {
   padding: 0.25em;
-  background: #ffe2d6;
+  /* background: #ffe2d6; */
   font-size: 1em;
+  color: orangered;
 }
 
 .underline {

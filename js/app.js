@@ -1,8 +1,6 @@
 // Game variables - global
 // *** move these into functions where possible
 const guessedLettersList = document.querySelector('.guessed-letters');
-
-// const letterInput = document.getElementById('letter'); 
 const wordInProgress = document.getElementById('word-in-progress');
 const remainingGuessesP = document.getElementById('remaining');
 const remainingGuessesSpan = document.getElementById('remaining-guesses');
@@ -34,14 +32,12 @@ function addPlaceholders(word) {
   for (const letter of word) {
     placeholderLetters.push('●');
   }
-  // Todo: check if this should be textContent
-  wordInProgress.innerText = placeholderLetters.join(''); // make the array a string
+  wordInProgress.textContent = placeholderLetters.join('');
 }
 
 // Validate player input is valid
 function validatePlayerInput(input) {
   const validInput = /[a-zA-Z]/; // regex to check for valid character inputed
-
   if (input.length === 0) {
     message.textContent = 'Please enter a letter';
   } else if (input.length > 1) {
@@ -69,7 +65,7 @@ function makeGuess(letter) {
 
 // Show letters guessed
 function showGuessedLetters() {
-  guessedLettersList.innerHtml = '';
+  guessedLettersList.innerHTML = ''; // clear the guessedLettersUL
   guessedLetters.forEach(letter => {
     const li = document.createElement('li');
     li.textContent = letter;
@@ -88,7 +84,7 @@ function updateWordInProgress(guessedLetters) {
   })
 
   wordInProgress.textContent = revealWord.join('');
-  // checkWin();
+  checkWin();
 }
 
 // Track number of guesses remaining 
@@ -105,13 +101,44 @@ function trackGuessesRemaining(guess) {
 
   if (remainingGuesses === 0) {
     message.innerHTML = `Bummer. You lose! <span class="highlight">${word}</span> was the word.`
-    // startOver();
+    startOver();
   } else if (remainingGuesses === 1) {
     remainingGuessesSpan.textContent = `${remainingGuesses} guess`;
   } else {
     remainingGuessesSpan.textContent = `${remainingGuesses} guesses`;
   }
 
+}
+
+function checkWin() {
+  if (word.toUpperCase() === wordInProgress.innerText) {
+    message.classList.add('win');
+    // fix this: already a <p> element here, plus styling is off
+    message.textContent = `You guessed it! Congrats!`;
+    startOver();
+  }
+}
+
+// replay game
+function startOver() {
+  guessBtn.classList.add('hide');
+  remainingGuessesP.classList.add('hide');
+  guessedLettersList.classList.add('hide');
+  playAgainBtn.classList.remove('hide');
+}
+
+function resetGame() {
+  message.classList.remove('win');
+  guessedLetters.length = 0; // check this
+  remainingGuesses = 8;
+  remainingGuessesSpan.textContent = `${remainingGuesses} guesses`;
+  guessedLettersList.innerHTML = '';
+  message.textContent = '';
+  getWord();
+  guessBtn.classList.remove('hide');
+  remainingGuessesP.classList.remove('hide');
+  guessedLettersList.classList.remove('hide');
+  playAgainBtn.classList.add('hide');
 }
 
 // listen for form submissions - guess made
@@ -129,3 +156,5 @@ document.getElementById('guess-form').addEventListener('submit', (e) => {
   letterInput.value = '';
 
 })
+
+playAgainBtn.addEventListener('click', resetGame);
