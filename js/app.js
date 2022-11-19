@@ -1,16 +1,15 @@
 // Game variables - global
-// *** move these into functions where possible
 const guessedLettersList = document.querySelector('.guessed-letters');
 const wordInProgress = document.getElementById('word-in-progress');
 const remainingGuessesP = document.getElementById('remaining');
 const remainingGuessesSpan = document.getElementById('remaining-guesses');
-const message = document.getElementById('message'); // create a message function?
+const message = document.getElementById('message');
 const guessBtn = document.getElementById('guess-btn');
 const playAgainBtn = document.getElementById('play-again-btn');
 
 // adjust difficulty based on guesses available? Standard (8), Hard (6), Insanity (2)
 let remainingGuesses = 8;
-let word = 'magnolia';
+let word = 'magnolia'; // default value
 let guessedLetters = [];
 
 async function getWord() {
@@ -25,6 +24,10 @@ async function getWord() {
 
 // execute game
 getWord();
+
+function setDifficulty() {
+  
+}
 
 // display dots for letters of word
 function addPlaceholders(word) {
@@ -53,7 +56,7 @@ function validatePlayerInput(input) {
 function makeGuess(letter) {
   letter = letter.toUpperCase();
   if (guessedLetters.includes(letter)) {
-    message.innerText = `"${letter}" has already been guessed. Try again!`;
+    message.textContent = `"${letter}" has already been guessed. Try again!`;
   } else {
     guessedLetters.push(letter);
     console.log('guessed letter pushed')
@@ -98,12 +101,12 @@ function trackGuessesRemaining(guess) {
     message.textContent = `Horray! "${guess}" is in the word.`;
   }
 
-
   if (remainingGuesses === 0) {
     message.innerHTML = `Bummer. You lose! <span class="highlight">${word}</span> was the word.`
     startOver();
   } else if (remainingGuesses === 1) {
     remainingGuessesSpan.textContent = `${remainingGuesses} guess`;
+    document.querySelector('.remaining-guesses').style.color = '#E2183D';
   } else {
     remainingGuessesSpan.textContent = `${remainingGuesses} guesses`;
   }
@@ -113,7 +116,6 @@ function trackGuessesRemaining(guess) {
 function checkWin() {
   if (word.toUpperCase() === wordInProgress.innerText) {
     message.classList.add('win');
-    // fix this: already a <p> element here, plus styling is off
     message.textContent = `You guessed it! Congrats!`;
     startOver();
   }

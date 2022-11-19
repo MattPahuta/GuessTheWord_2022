@@ -2,6 +2,7 @@
 :root {
   /* fonts */
   --ff-sans: 'Plus Jakarta Sans', Arial, sans-serif;
+  --ff-cursive: 'Carter One', cursive;
   /* ****** font sizes *****************/
   /* ********************************* */
   --fs-700: 2.25rem;
@@ -16,17 +17,15 @@
   --clr-black: hsla(219, 22%, 16%, 1);
   --clr-white: hsla(0, 0%, 100%, 1);
   --clr-dark-gray-blue: hsla(217, 19%, 24%, 1);
-  --clr-galactic-blue: hsla(252, 66%, 62%, 1);
-  --clr-electric-green: hsla(150, 100%, 66%, 1);
-  --clr-light-cyan: hsla(193, 38%, 86%, 1);
-
+  --clr-blue: hsla(226, 58%, 52%, 1);
+  --clr-electric-green: hsla(132, 57%, 55%, 1);
 }
 
 @media (min-width: 40em) {
   :root {
     --fs-700: 2.75rem;
     --fs-600: 2rem;
-    --fs-500: 2rem;
+    --fs-500: 1.875rem;
     --fs-400: 1.25rem;
     --fs-350: 1rem;
   }
@@ -34,7 +33,7 @@
 
 @media (min-width: 72em) {
   :root {
-    --fs-700: 3.5rem;
+    --fs-700: 4rem;
     --fs-600: 2.5rem;
     --fs-400: 1.5rem;
   }
@@ -92,52 +91,31 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-
-
   line-height: 1.6;
   text-align: center;
-  /* update font - heading and body */
   font-family: var(--ff-sans);
-
   font-size: var(--fs-400);
-  color: var(--clr-light-cyan);
-  /* background-color: var(--clr-black); */
-
+  color: var(--clr-white);
   background-image: linear-gradient(
-    45deg,
-    hsl(240deg 73% 70%) 0%,
-    hsl(242deg 58% 65%) 11%,
-    hsl(245deg 46% 60%) 22%,
-    hsl(247deg 37% 55%) 33%,
-    hsl(249deg 31% 51%) 44%,
-    hsl(251deg 29% 46%) 56%,
-    hsl(254deg 28% 42%) 67%,
-    hsl(256deg 27% 38%) 78%,
-    hsl(258deg 25% 34%) 89%,
-    hsl(260deg 24% 30%) 100%
+    0deg,
+    hsl(132deg 57% 55%) 0%,
+    hsl(148deg 58% 55%) 14%,
+    hsl(163deg 57% 54%) 29%,
+    hsl(179deg 58% 54%) 43%,
+    hsl(195deg 58% 53%) 57%,
+    hsl(210deg 58% 53%) 71%,
+    hsl(226deg 58% 52%) 86%,
+    hsl(242deg 58% 52%) 100%
   );
-
-  /* background-image: url("../img/bg.png"); */
-  /* background-size: 800px;
-  background-repeat: repeat; */
-
-
-  /* color: #305050; */
 }
 
 .container {
   margin-inline: auto;
-  /* background: radial-gradient(50% 50% at 50% 50%,
-    rgba(167, 237, 237, 0.3) 0%,
-    rgba(156, 226, 226, 0) 100%); */
-
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   width: 90%;
-
-
 }
 
 header {
@@ -148,14 +126,11 @@ header {
   gap: 1.5em;
 }
 
-/* update logo - design with canva? */
-.logo {
-  width: 70%;
-  max-width: 484px;
-}
-
 h1 {
+  font-family: var(--ff-cursive);
   font-size: var(--fs-700);
+  letter-spacing: 1.5px;
+  color: var(--clr-white);
 }
 
 .game-board {
@@ -179,7 +154,7 @@ h1 {
 }
 
 .game-container {
-  padding: 1.5em 1.5em;
+  padding: 2em 1.5em;
   display: flex;
   flex-direction: column;
   gap: 0.75em;
@@ -192,7 +167,7 @@ h1 {
 
 .highlight {
   padding: 0.25em;
-  /* background: #ffe2d6; */
+  background: #ffe2d6;
   font-size: 1em;
   color: orangered;
 }
@@ -203,9 +178,9 @@ h1 {
 }
 
 .word-in-progress {
-  letter-spacing: 15px;
-  color: #28bdbd;
-  font-size: 30px;
+  letter-spacing: var(--fs-350);
+  color: var(--clr-electric-green);
+  font-size: var(--fs-500);
   line-height: 1;
 }
 
@@ -219,12 +194,10 @@ h1 {
   padding: 0 0.5em;
 }
 
-
 .guess-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5em;
 }
 
 .guess-form label {
@@ -240,13 +213,19 @@ input {
   font-size: 1.5em;
   margin-top: 0.5em;
   padding: 0.5em;
-  border: 3px solid #28bdbd;
+  border: 4px solid var(--clr-electric-green);
+
 }
 
 input:active,
 input:focus {
   outline: 0;
-  border: 4px solid #28bdbd;
+  border-color: var(--clr-blue);
+}
+
+.remaining-guesses {
+  font-weight: 700;
+  color: var(--clr-electric-green);
 }
 
 /* revise button styles = Steph Eckles  */
@@ -254,7 +233,7 @@ input:focus {
 .play-again {
   padding: 1em 3em;
   border-radius: 50px;
-  /* margin-top: 1em; */
+  margin-top: 1em;
   color: var(--clr-black);
   background: var(--clr-electric-green);
   font-size: 1em;
@@ -274,16 +253,22 @@ input:focus {
   transform: scale(0.98);
   /* background: brightness(0.3); */
   color: var(--clr-white);
+  background: var(--clr-blue);
+  transition: 150ms all ease-in-out;
 }
 
 /* animatied background */
 /* Todo: change to animated gif or confetti background */
 .win {
-  padding: 0 1em;
-  background: linear-gradient(-45deg, #ff9d64, #f5620c);
+  margin-bottom: 1em;
+  padding: 1em;
+  background: linear-gradient(-45deg, #4BCE65, #413CCB);
   background-size: 400% 400%;
   animation: gradient 2s ease infinite;
+  border-radius: 10px;
 }
+
+
 
 @keyframes gradient {
   0% {

@@ -9,30 +9,26 @@
   <!-- <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png"> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Guess the Word 2.0</h1>
-      <img class="logo" src="img/logo.png" alt="Guess The Word" />
+      <h1>GUESS the WORD</h1>
     </header>
-
-
     <main>
       <section id="game-board" class="game-board">
         <div class="game-container">
           <p id="message" class="message"></p>
           <p id="word-in-progress" class="word-in-progress"></p>
-          <p id="remaining" class="remaining">You have <span id="remaining-guesses">8 guesses</span> remaining.</p>
+          <p id="remaining" class="remaining">You have <span id="remaining-guesses" class="remaining-guesses">8 guesses</span> remaining.</p>
           <!-- list to hold letters guessed by player -->
           <ul id="guessed-letters-list" class="guessed-letters"></ul>
-      
           <!-- Game form -->
           <form action="" id="guess-form" class="guess-form">
             <label for="letter">Type one letter:</label>
-            <input id="letter" type="text" name="letter" class="letter" />
+            <input id="letter" type="text" name="letter" class="letter">
             <div class="form-element button-element">
               <button id="guess-btn" class="guess">Guess!</button>
             </div>
