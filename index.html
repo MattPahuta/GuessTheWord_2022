@@ -27,6 +27,7 @@
           <ul id="guessed-letters-list" class="guessed-letters"></ul>
           <!-- Game form -->
           <form action="" id="guess-form" class="guess-form">
+
             <label for="letter">Type one letter:</label>
             <input id="letter" type="text" name="letter" class="letter">
             <div class="form-element button-element">
@@ -38,6 +39,18 @@
         </div>
       </section>
     </main>
+
+    <div class="modal hide">
+      <!-- choose difficulty -->
+      <div class="mode-section">
+        <input type="radio" id="mode1" name="mode" value="normal">
+        <label for="mode1">Normal</label>
+        <input type="radio" id="mode2" name="mode" value="hard">
+        <label for="mode2">Hard</label>
+        <input type="radio" id="mode3" name="mode" value="insanity">
+        <label for="mode3">Insanity</label>
+      </div>
+    </div>
 
   </div>
   

@@ -25,8 +25,9 @@ async function getWord() {
 // execute game
 getWord();
 
+// modal form - choose difficulty setting (8 guesses, 6 guesses, 4 guesses)
 function setDifficulty() {
-  
+
 }
 
 // display dots for letters of word
@@ -102,11 +103,11 @@ function trackGuessesRemaining(guess) {
   }
 
   if (remainingGuesses === 0) {
-    message.innerHTML = `Bummer. You lose! <span class="highlight">${word}</span> was the word.`
+    message.innerHTML = `Bummer. You lose!  <span class="reveal">${wordUpper}</span> was the word.`
     startOver();
   } else if (remainingGuesses === 1) {
     remainingGuessesSpan.textContent = `${remainingGuesses} guess`;
-    document.querySelector('.remaining-guesses').style.color = '#E2183D';
+    remainingGuessesSpan.classList.add('danger');
   } else {
     remainingGuessesSpan.textContent = `${remainingGuesses} guesses`;
   }
@@ -131,9 +132,10 @@ function startOver() {
 
 function resetGame() {
   message.classList.remove('win');
-  guessedLetters.length = 0; // check this
+  guessedLetters.length = 0;
   remainingGuesses = 8;
   remainingGuessesSpan.textContent = `${remainingGuesses} guesses`;
+  remainingGuessesSpan.classList.remove('danger');
   guessedLettersList.innerHTML = '';
   message.textContent = '';
   getWord();
