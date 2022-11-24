@@ -30,8 +30,17 @@ function setDifficulty() {
 
 }
 
+// display info about target word
+function aboutWord(state = 'visible') {
+  document.getElementById('word-length').textContent = word.length;
+  const aboutWord = document.getElementById('about-word');
+  return state === 'hide' ? aboutWord.classList.add('hide') : aboutWord.classList.remove('hide');
+}
+
 // display dots for letters of word
 function addPlaceholders(word) {
+  // document.getElementById('word-length').textContent = word.length; // update target word length
+  aboutWord()
   const placeholderLetters = [];
   for (const letter of word) {
     placeholderLetters.push('●');
@@ -79,6 +88,7 @@ function showGuessedLetters() {
 
 // Update the hidden word to guess
 function updateWordInProgress(guessedLetters) {
+
   const wordUpper = word.toUpperCase(); // make word upperCase globally?
   const wordArray = wordUpper.split('');
   const revealWord = [];
@@ -128,6 +138,7 @@ function startOver() {
   remainingGuessesP.classList.add('hide');
   guessedLettersList.classList.add('hide');
   playAgainBtn.classList.remove('hide');
+  aboutWord('hide');
 }
 
 function resetGame() {

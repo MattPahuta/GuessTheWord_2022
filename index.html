@@ -21,7 +21,11 @@
       <section id="game-board" class="game-board">
         <div class="game-container">
           <p id="message" class="message"></p>
-          <p id="word-in-progress" class="word-in-progress"></p>
+          <p id="about-word" class="about-word">You're trying to guess a <span id="word-length"></span> letter word:</p>
+          <div class="in-progress-word-container">
+            <p id="word-in-progress" class="word-in-progress"></p>
+          </div>
+
           <p id="remaining" class="remaining">You have <span id="remaining-guesses" class="remaining-guesses">8 guesses</span> remaining.</p>
           <!-- list to hold letters guessed by player -->
           <ul id="guessed-letters-list" class="guessed-letters"></ul>
