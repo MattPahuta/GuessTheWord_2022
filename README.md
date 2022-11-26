@@ -17,7 +17,7 @@ This is a revised version of The Guess the Word game project from the [Skillcrus
 
 ### Screenshot
 
-![](./images/project-ss.webp)
+![](./img/project-ss.webp)
 
 ### Links
 
