@@ -62,7 +62,6 @@ function makeGuess(letter) {
     message.textContent = `"${letter}" has already been guessed. Try again!`;
   } else {
     guessedLetters.push(letter);
-    console.log('guessed letter pushed')
     showGuessedLetters();
     trackGuessesRemaining(letter);
     updateWordInProgress(guessedLetters);
@@ -149,7 +148,6 @@ function resetGame() {
 // listen for form submissions - guess made
 document.getElementById('guess-form').addEventListener('submit', (e) => {
   e.preventDefault();
-  console.log('guess submitted');
   message.textContent = '';
   const letterInput = document.getElementById('letter'); 
   const guessedLetter = letterInput.value;
