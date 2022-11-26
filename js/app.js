@@ -7,7 +7,6 @@ const message = document.getElementById('message');
 const guessBtn = document.getElementById('guess-btn');
 const playAgainBtn = document.getElementById('play-again-btn');
 
-// adjust difficulty based on guesses available? Standard (8), Hard (6), Insanity (2)
 let remainingGuesses = 8;
 let word = 'magnolia'; // default value
 let guessedLetters = [];
@@ -18,17 +17,12 @@ async function getWord() {
   const wordArray = data.split('\n'); // split on the break
   const randomIndex = Math.floor(Math.random() * wordArray.length);
   word = wordArray[randomIndex].trim(); // use trim to ensure any whitespace is eliminated
-  console.log(word) // debug
+  // console.log(word)
   addPlaceholders(word);
 }
 
 // execute game
 getWord();
-
-// modal form - choose difficulty setting (8 guesses, 6 guesses, 4 guesses)
-function setDifficulty() {
-
-}
 
 // display info about target word
 function aboutWord(state = 'visible') {
@@ -39,7 +33,6 @@ function aboutWord(state = 'visible') {
 
 // display dots for letters of word
 function addPlaceholders(word) {
-  // document.getElementById('word-length').textContent = word.length; // update target word length
   aboutWord()
   const placeholderLetters = [];
   for (const letter of word) {
@@ -54,9 +47,9 @@ function validatePlayerInput(input) {
   if (input.length === 0) {
     message.textContent = 'Please enter a letter';
   } else if (input.length > 1) {
-    message.textContent = `Give me one letter only.`;
+    message.textContent = `One letter at a time, please.`;
   } else if (!input.match(validInput)) {
-    message.textContent = `Yo! A letter from A to Z.`;
+    message.textContent = `Enter a letter from A to Z.`;
   } else {
     return input;
   }
@@ -88,22 +81,19 @@ function showGuessedLetters() {
 
 // Update the hidden word to guess
 function updateWordInProgress(guessedLetters) {
-
-  const wordUpper = word.toUpperCase(); // make word upperCase globally?
+  const wordUpper = word.toUpperCase();
   const wordArray = wordUpper.split('');
   const revealWord = [];
-
   wordArray.forEach(letter => {
     guessedLetters.includes(letter) ? revealWord.push(letter.toUpperCase()) : revealWord.push('●')
   })
-
   wordInProgress.textContent = revealWord.join('');
   checkWin();
 }
 
 // Track number of guesses remaining 
 function trackGuessesRemaining(guess) {
-  const wordUpper = word.toUpperCase();  // make word upperCase globally?
+  const wordUpper = word.toUpperCase();
 
   if (!wordUpper.includes(guess)) {
     message.textContent = `Nope. "${guess}" is not in the word.`;
@@ -161,15 +151,11 @@ document.getElementById('guess-form').addEventListener('submit', (e) => {
   e.preventDefault();
   console.log('guess submitted');
   message.textContent = '';
-
   const letterInput = document.getElementById('letter'); 
   const guessedLetter = letterInput.value;
   const validGuess = validatePlayerInput(guessedLetter);
-
   if (validGuess) makeGuess(guessedLetter);
-
   letterInput.value = '';
-
-})
+});
 
 playAgainBtn.addEventListener('click', resetGame);

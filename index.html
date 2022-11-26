@@ -9,7 +9,7 @@
   <!-- <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png"> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
@@ -25,20 +25,15 @@
           <div class="in-progress-word-container">
             <p id="word-in-progress" class="word-in-progress"></p>
           </div>
-
           <p id="remaining" class="remaining">You have <span id="remaining-guesses" class="remaining-guesses">8 guesses</span> remaining.</p>
-          <!-- list to hold letters guessed by player -->
           <ul id="guessed-letters-list" class="guessed-letters"></ul>
-          <!-- Game form -->
           <form action="" id="guess-form" class="guess-form">
-
             <label for="letter">Type one letter:</label>
             <input id="letter" type="text" name="letter" class="letter">
-            <div class="form-element button-element">
+            <div>
               <button id="guess-btn" class="guess">Guess!</button>
             </div>
           </form>
-          <!-- hidden by default - show after game end -->
           <button id="play-again-btn" class="play-again hide">Play Again!</button>
         </div>
       </section>
