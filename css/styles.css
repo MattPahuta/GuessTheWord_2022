@@ -8,7 +8,7 @@
   --fs-700: 2.5rem;
   --fs-600: 1.625rem;
   --fs-500: 1.5rem;
-  --fs-400: 1rem;
+  --fs-400: 1.125rem;
   --fs-350: 0.875rem;
   /* font weights */
   --fw-700: 700;
@@ -28,9 +28,9 @@
 @media (min-width: 40em) {
   :root {
     --fs-700: 4rem;
-    --fs-600: 2rem;
-    --fs-500: 1.875rem;
-    --fs-400: 1.25rem;
+    --fs-600: 2.75rem;
+    --fs-500: 2rem;
+    --fs-400: 1.5rem;
     --fs-350: 1rem;
   }
 }
@@ -39,7 +39,9 @@
   :root {
     --fs-700: 6.25rem;
     --fs-600: 2.5rem;
-    --fs-400: 1.75rem;
+    --fs-500: 2.25rem;
+    --fs-400: 2rem;
+    --fs-350: 1.25rem;
   }
 }
 

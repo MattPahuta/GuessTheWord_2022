@@ -59,7 +59,7 @@ function validatePlayerInput(input) {
 function makeGuess(letter) {
   letter = letter.toUpperCase();
   if (guessedLetters.includes(letter)) {
-    message.textContent = `"${letter}" has already been guessed. Try again!`;
+    message.textContent = `"${letter}" was already guessed!`;
   } else {
     guessedLetters.push(letter);
     showGuessedLetters();
