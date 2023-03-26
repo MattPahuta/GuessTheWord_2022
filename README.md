@@ -41,6 +41,6 @@ Users should be able to:
 
 ### Future enhancements
 
-- Score tracking
+- Score and winning streak tracking
 - Choose a difficulty setting
 
