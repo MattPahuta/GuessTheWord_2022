@@ -1,12 +1,11 @@
 /* Custom properties */
 :root {
   /* fonts */
-  font-family: 'Fraunces', serif;
-  --ff-sans: 'Plus Jakarta Sans', Arial, sans-serif;
-  --ff-serif: 'Fraunces', serif;
+  --ff-sans: 'Nunito Sans', sans-serif;
+  --ff-heading: 'Carter One', cursive;
   /* ****** font sizes *****************/
   /* ********************************* */
-  --fs-700: 2.25rem;
+  --fs-700: 2.5rem;
   --fs-600: 1.625rem;
   --fs-500: 1.5rem;
   --fs-400: 1rem;
@@ -15,9 +14,18 @@
   --fw-700: 700;
   --fw-500: 500;
   /* colors */
-  --clr-black: hsla(219, 22%, 16%, 1);
-  --clr-white: hsla(0, 0%, 100%, 1);
-  --clr-light-bg: hsl(180, 56%, 92%);
+  --clr-black: #0a0f0d;
+  --clr-white: #fbfcfc;
+  /* make this --clr-silver */
+  --clr-light-bg: #C4CBCA;
+  --clr-ash-gray: #A9C8C5;
+  --clr-teal: #3CBBB1;
+  --clr-violet: #2A1E5C;
+  --clr-red: #EE4266;
+  --clr-rose: #C73B64;
+
+
+
   --clr-gray-blue: rgba(93, 119, 167, 0.8);
   --clr-dark-gray-blue: rgba(50, 58, 73);
   --clr-blue: hsl(226, 58%, 52%);
@@ -28,7 +36,7 @@
 
 @media (min-width: 40em) {
   :root {
-    --fs-700: 3rem;
+    --fs-700: 3.5rem;
     --fs-600: 2rem;
     --fs-500: 1.875rem;
     --fs-400: 1.25rem;
@@ -101,8 +109,13 @@ body {
   font-family: var(--ff-sans);
   font-size: var(--fs-400);
   color: var(--clr-white);
-  background-color: var(--clr-light-bg);
-  background-image: url("../img/jigsaw-2.svg");
+  background-color: var(--clr-white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23a9c8c5' fill-opacity='0.4'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+header,
+main {
+  width: 100%;
 }
 
 /* utility classes */
@@ -145,12 +158,15 @@ header {
   gap: 1.5em;
 }
 
+.logo {
+  max-width: 150px;
+}
+
 h1 {
-  font-family: var(--ff-serif);
+  font-family: var(--ff-heading);
   font-size: var(--fs-700);
-  font-weight: 900;
   letter-spacing: 1.5px;
-  color: var(--clr-dark-gray-blue);
+  color: var(--clr-red);
 }
 
 .game-board {
@@ -161,6 +177,14 @@ h1 {
 }
 
 @media (min-width: 40rem) {
+  header {
+    flex-direction: row;
+  }
+
+  .logo {
+    max-width: 120px;
+  }
+
   .game-board {
     min-width: 500px;
   }
@@ -271,7 +295,7 @@ input:focus {
 .win {
   margin-bottom: 1em;
   padding: 1em;
-  font-family: var(--ff-serif);
+  font-family: var(--ff-heading);
   font-size: var(--fs-500);
   letter-spacing: 1px;
   background: linear-gradient(-45deg, #4BCE65, #413CCB);
