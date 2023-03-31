@@ -141,18 +141,17 @@ main {
 }
 
 /* General styles */
-
 header {
   width: 100%;
   padding: 2em 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5em;
+  gap: 0.5em;
 }
 
 .logo {
-  max-width: 150px;
+  max-width: 120px;
 }
 
 h1 {
@@ -233,7 +232,6 @@ input:focus {
   color: var(--clr-teal);
 }
 
-/* revise button styles = Steph Eckles  */
 .guess,
 .play-again {
   padding: 0.5em 2.5em;
@@ -291,18 +289,20 @@ input:focus {
 }
 
 @media (min-width: 40rem) {
-  header {
-    gap: 0.5em;
+  .logo {
+    max-width: 150px;
   }
 
   .game-board {
-    min-width: 500px;
+    margin-inline: auto;
+    width: 85%;
   }
 }
 
 @media (min-width: 72rem) {
-  .logo {
-    max-width: 200px;
+  header {
+    flex-direction: row;
+    justify-content: center;
   }
 
   .game-board {
